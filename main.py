@@ -44,9 +44,17 @@ def main():
         for updates in updateables:
             updates.update(dt)
 
+        for asteroid in asteroids:
+            if(asteroid.collision(player)):
+                print("Game over!")
+                return
+            
+
         for draws in drawables:
             draws.draw(screen)
         pygame.display.flip()
+
+    
 
 
 if __name__ == "__main__":
