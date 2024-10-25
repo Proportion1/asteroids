@@ -3,6 +3,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+from shot import *
 
 def main():
     pygame.init()
@@ -19,9 +20,11 @@ def main():
     updateables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     Player.containers = (updateables, drawables)
     Asteroid.containers = (asteroids, updateables, drawables)
     AsteroidField.containers = (updateables,)
+    Shot.containers = (shots, updateables, drawables)
     #added after because the lesson says to create all player objects after the change
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, PLAYER_RADIUS)
     #asteroid = Aster
@@ -48,6 +51,10 @@ def main():
             if(asteroid.collision(player)):
                 print("Game over!")
                 return
+        
+        #for shot in shots:
+        #    if(shot.collision(player)):
+        
             
 
         for draws in drawables:
